@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Elemental Riddle Adventure</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Source Sans Pro", sans-serif;
+        background: #f5faff;
+        color: #222;
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+    }
+
+    .game-box {
+        background: white;
+        width: 500px;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(10px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    h1 {
+        margin-top: 0;
+        text-align: center;
+        background: linear-gradient(90deg, #42a5f5, #1e88e5);
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 26px;
+    }
+
+    .element-label {
+        text-align: center;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #1e88e5;
+    }
+
+    .riddle {
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #90caf9;
+        border-radius: 8px;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #1e88e5;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #1565c0;
+    }
+
+    .hint-btn {
+        background: #42a5f5;
+        margin-top: 10px;
+    }
+
+    .progress-bar-outer {
+        width: 100%;
+        height: 14px;
+        background: #e3f2fd;
+        border-radius: 7px;
+        margin-top: 20px;
+    }
+
+    .progress-bar-inner {
+        height: 100%;
+        background: #1e88e5;
+        width: 0%;
+        border-radius: 7px;
+        transition: width 0.4s ease;
+    }
+
+    .message {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 15px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="game-box">
+
+    <h1>Elemental Riddle Adventure</h1>
+
+    <div class="element-label" id="element">Element: Earth 🌿</div>
+
+    <div class="riddle" id="riddle">I can crack, I can hold water, and I can crumble — what am I?</div>
+
+    <input id="answer" placeholder="Type your answer..." autocomplete="off">
+
+    <button onclick="submitAnswer()">Submit Answer</button>
+    <button class="hint-btn" onclick="showHint()">Hint</button>
+
+    <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="progress"></div>
+    </div>
+
+    <div class="message" id="message"></div>
+</div>
+
+<script>
+const stages = [
+    {
+        element: "Earth 🌿",
+        riddle: "I can crack, I can hold water, and I can crumble — what am I?",
+        answer: "soil",
+        hint: "You plant seeds in it."
+    },
+    {
+        element: "Water 🌊",
+        riddle: "I move without legs and roar without a mouth. What am I?",
+        answer: "wave",
+        hint: "You find me at the beach."
+    },
+    {
+        element: "Fire 🔥",
+        riddle: "I eat, I live, I grow — but I need no mouth or lungs.",
+        answer: "fire",
+        hint: "I disappear when water arrives."
+    },
+    {
+        element: "Air 🌬️",
+        riddle: "I am invisible but can knock down trees.",
+        answer: "wind",
+        hint: "You can feel me but not see me."
+    },
+    {
+        element: "Aether ✨",
+        riddle: "I can be anywhere at once, yet have no mass. Dreamers chase me.",
+        answer: "light",
+        hint: "You see me every day."
+    }
+];
+
+let current = 0;
+
+function loadStage() {
+    document.getElementById("element").textContent = "Element: " + stages[current].element;
+    document.getElementById("riddle").textContent = stages[current].riddle;
+    document.getElementById("progress").style.width = ((current) / stages.length) * 100 + "%";
+    document.getElementById("answer").value = "";
+    document.getElementById("message").textContent = "";
+}
+
+function submitAnswer() {
+    let user = document.getElementById("answer").value.toLowerCase().trim();
+    let correct = stages[current].answer;
+
+    if (user === correct) {
+        document.getElementById("message").style.color = "green";
+        document.getElementById("message").textContent = "Correct! Advancing...";
+        
+        current++;
+        if (current >= stages.length) {
+            winGame();
+        } else {
+            setTimeout(loadStage, 900);
+        }
+    } else {
+        document.getElementById("message").style.color = "red";
+        document.getElementById("message").textContent = "Incorrect! Try again.";
+    }
+}
+
+function showHint() {
+    document.getElementById("message").style.color = "#1e88e5";
+    document.getElementById("message").textContent = "Hint: " + stages[current].hint;
+}
+
+function winGame() {
+    document.querySelector(".game-box").innerHTML = `
+        <h1>🎉 You are now an Elemental Master! 🎉</h1>
+        <p style="font-size:20px; text-align:center; margin-top:20px;">
+            You completed all riddles and mastered <strong>Earth, Water, Fire, Air, and Aether.</strong>
+        </p>
+        <button onclick="location.reload()">Play Again</button>
+    `;
+}
+
+// Load first stage
+loadStage();
+</script>
+
+</body>
+</html>

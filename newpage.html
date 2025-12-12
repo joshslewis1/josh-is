@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Joshua Lewis &amp; Resources</title>
+
+ 
+  <link rel="stylesheet" href="styles/styles.css">
+
+
+  <meta name="description" content="A compact, editable single-file mountain biking scratch page with examples of HTML/CSS features (lists, image, YouTube embed, Tableau embed, anchors, and linked stylesheet)." />
+</head>
+<body>
+ 
+  <div id="hero" class="block hero-block">
+    <nav class="top-nav">
+      <a href="professional.html" class="nav-link">Professional Pages</a>
+      <a href="game.html" class="nav-link">Play a Fun Game!</a>
+      <a href="#trails" class="nav-link">Trails</a>
+      <a href="#video" class="nav-link">Video</a>
+      <a href="#tableau" class="nav-link">Data</a>
+    </nav>
+    <h1>Joshua Lewis - A Website About Me And Mountain Biking</h1>
+    <p class="tagline">Lets Learn More About Bikes</p>
+  </div>
+
+  
+  <div id="main" class="block main-block">
+    <section id="about" class="card">
+      <h2>More About Bikes</h2>
+      <p>Here are some reason of why I like mountain biking:</p>
+      <ol>
+        <li>It helps me get outdoors.</li>
+        <li>It allows me to spend time with friends.</li>
+        <li>It helps me learn more about how to fix things.</li>
+        <li>
+          Here is some gear you need while biking and some skills to learn:
+          <ol>
+            <li>Gear checklist
+              <ul>
+                <li>Helmet</li>
+                <li>Glasses</li>
+                <li>Biking Shoes</li>
+              </ul>
+            </li>
+            <li>Skills to practice
+              <ul>
+                <li>Cornering</li>
+                <li>Body position</li>
+                <li>Braking</li>
+              </ul>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </section>
+
+    <section id="trails" class="card">
+      <h2>Favorite Trails I have Riden</h2>
+      <p>Click to jump back to <a href="#hero">the top</a>.</p>
+
+    
+      <ol>
+        <li>Predator Trail, Washington</li>
+        <li>Slickrock, Utah</li>
+        <li>Holy Guacamole, Utah</li>
+        <li>Thunder Mountain, Utah</li>
+        <li>Easy Local Trails in Utah
+          <ul>
+            <li>Valley Vista</li>
+            <li>Khyv Peak</li>
+            <li>Timp Park</li>
+          </ul>
+        </li>
+        
+      </ol>
+
+      <h3>Trail Photo</h3>
+     
+      <figure class="photo-figure">
+        <img src= images/img_0183.jpeg alt="Mountain bike trail" class="responsive-photo">
+
+        <figcaption>Thunder Mountain Trail in Southern Utah, Picture Taken By Me!</figcaption>
+      </figure>
+    </section>
+
+    <section id="video" class="card">
+      <h2>Mountain Biking Video</h2>
+      <p>Watch This Awesome Video About Mountain Biking.</p>
+     
+      <div class="video-wrap">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Rh-1narwWIw" title="One Hour Mountain Biking POV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </section>
+  </div>
+
+ 
+  <div id="sidebar" class="block sidebar-block">
+    <section id="tableau" class="card">
+      <h2>Bike Data</h2>
+      <p>Bike Sales Worldwide</p>
+
+     
+      <div class="tableau-responsive">
+        <iframe src="https://public.tableau.com/views/Generalbicyclesalesanalysis/FinalDashboardofbikesalesi?:embed=yes&:showVizHome=no&:toolbar=yes" scrolling="no" frameborder="0"></iframe>
+      </div>
+      
+    </section>
+
+    <section id="quick-links" class="card">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#about">About this page</a></li>
+        <li><a href="#trails">Trail types</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#tableau">Interactive Data</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <footer class="block footer-block">
+  
+  </footer>
+</body>
+</html>
